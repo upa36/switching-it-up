@@ -36,8 +36,42 @@ function calculateReturnScore(player) {
 }
 
 module.exports.calculateScore = function (player) {
-  return calculatePassingScore(player) +
-    calculateRushingScore(player) +
-    calculateReceivingScore(player) +
-    calculateReturnScore(player)
+  /* return calculatePassingScore(player) +
+     calculateRushingScore(player) +
+     calculateReceivingScore(player) +
+     calculateReturnScore(player)
+
+  if (player.position === 'QB') {
+     return calculatePassingScore(player) +
+   calculateRushingScore(player) 
+   } else {
+     return calculatePassingScore(player) +
+     calculateRushingScore(player) +
+     calculateReceivingScore(player) +
+     calculateReturnScore(player)*/
+
+
+  switch (player.position) {
+    case 'QB':
+      return calculatePassingScore(player) +
+        calculateRushingScore(player)
+    case 'RB':
+      return calculateRushingScore(player) +
+        calculateReceivingScore(player) +
+        calculateReturnScore(player)
+    case 'WR':
+      return calculateRushingScore(player) +
+        calculateReceivingScore(player) +
+        calculateReturnScore(player)
+    case 'TE':
+      return calculateReceivingScore(player)
+    default:
+      return 0
+
+
+  }
 }
+
+
+
+
